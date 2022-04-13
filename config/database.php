@@ -35,6 +35,13 @@ return [
 
     'connections' => [
 
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'host' => env('MONGO_HOST', '127.0.0.1'),
+            'port' => env('MONGO_PORT', 27017),
+            'database' => env('MONGO_DATABASE', 'letworldknow_mongo'),
+
+        ],
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),

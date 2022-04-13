@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "astrotomic/laravel-translatable": "^11.10",
         "guzzlehttp/guzzle": "^7.2",
+        "jenssegers/mongodb": "^3.9",
         "kalnoy/nestedset": "^6.0",
         "laravel/framework": "^9.2",
         "laravel/passport": "^10.3",

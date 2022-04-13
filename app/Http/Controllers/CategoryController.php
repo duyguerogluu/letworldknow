@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -27,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -39,6 +40,10 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $rAll = $request->all();
+        $model = new Product();
+        $model->fill($rAll);
+        $status = $model->save();
+        dd($status);
         $data = [
             'slug' => $rAll['slug'],
             'parent_id' => $rAll['parent_id'],
@@ -47,8 +52,12 @@ class CategoryController extends Controller
             'tr'=> ['title'=>$rAll['title_tr'], 'description'=> $rAll['description_tr']]
 
         ];
+        try {
+            $product = Category::create($data);
 
-        $product = Category::create($data);
+        }catch (\Exception $e){
+            dd($e);
+        }
         dd($product);
     }
 

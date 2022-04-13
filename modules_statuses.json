@@ -1,4 +1,7 @@
 {
     "Auth": true,
-    "Admin": true
+    "Admin": true,
+    "Social": true,
+    "Store": true,
+    "Dashboard": true
 }
