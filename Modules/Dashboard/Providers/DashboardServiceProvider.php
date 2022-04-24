@@ -4,6 +4,10 @@ namespace Modules\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Dashboard\Repositories\Interfaces\MemberRepositoryInterface;
+use Modules\Dashboard\Repositories\Interfaces\ProfileRepositoryInterface;
+use Modules\Dashboard\Repositories\MemberRepository;
+use Modules\Dashboard\Repositories\ProfileRepository;
 
 class DashboardServiceProvider extends ServiceProvider
 {
@@ -11,7 +15,6 @@ class DashboardServiceProvider extends ServiceProvider
      * @var string $moduleName
      */
     protected $moduleName = 'Dashboard';
-
     /**
      * @var string $moduleNameLower
      */
@@ -37,6 +40,8 @@ class DashboardServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(MemberRepositoryInterface::class,MemberRepository::class);
+        $this->app->bind(ProfileRepositoryInterface::class,ProfileRepository::class);
         $this->app->register(RouteServiceProvider::class);
     }
 

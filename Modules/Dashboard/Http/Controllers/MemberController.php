@@ -5,9 +5,19 @@ namespace Modules\Dashboard\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Dashboard\Http\Requests\MemberRequest;
+use Modules\Dashboard\Repositories\Interfaces\MemberRepositoryInterface;
 
 class MemberController extends Controller
 {
+
+    private $repository;
+
+    public function __construct(MemberRepositoryInterface $memberRepository)
+    {
+        $this->repository= $memberRepository;
+    }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -31,9 +41,9 @@ class MemberController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(MemberRequest $request)
     {
-        //
+        return $this->repository->create($request->all());
     }
 
     /**
@@ -62,9 +72,10 @@ class MemberController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update($id,MemberRequest $request)
     {
-        //
+        return $this->repository->update($id,$request->all());
+
     }
 
     /**

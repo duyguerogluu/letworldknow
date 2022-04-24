@@ -8,11 +8,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Profile extends Model
 {
     use HasFactory;
+    // @todo classların başına sabitlenen değişkenler ne kadar işlevsel araştır
+    protected $fillable = [
+        'member_id',
+        'cover_photo',
+        'is_open_relation',
+        'relation_status',
+        'about',
+        'philosophy',
+        'feith',
+        'current_country',
+        'current_province',
+        'job',
+        'job_sector',
+    ];
 
-    protected $fillable = [];
-    
-    protected static function newFactory()
-    {
-        return \Modules\Dashboard\Database\factories\ProfileFactory::new();
-    }
+
+
+
 }

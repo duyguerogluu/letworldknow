@@ -14,17 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('members', function (Blueprint $table) {
-            $table->unsignedBigInteger('id');
+            $table->id();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('phone_1');
-            $table->string('phone_2');
-            $table->unsignedBigInteger('address_id');
-            $table->unsignedBigInteger('profile_id');
-            $table->string('photo');
+            $table->string('phone_2')->nullable();
+            $table->string('photo')->nullable();
             //@todo konumları da buraya ekleyelim
             $table->enum('gender',['male','female','both']);
             $table->timestamps();
+
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

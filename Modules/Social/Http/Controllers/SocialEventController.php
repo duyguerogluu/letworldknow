@@ -6,7 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class SocialController extends Controller
+class SocialEventController extends Controller
 {
     /**
      * Display a listing of the resource.
